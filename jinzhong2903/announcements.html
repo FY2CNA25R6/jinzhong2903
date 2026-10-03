@@ -7,10 +7,20 @@
   <title>班级公告 · 103班 音乐领军班</title>
   <!-- 跨文档视图过渡:多页之间平滑切换,无白屏 -->
   <meta name="view-transition" content="same-origin">
-  <!-- 西文/数字字体 Inter(中文自动回退苹方 PingFang SC) -->
-  <link rel="preconnect" href="https://fonts.loli.net">
-  <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
-  <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <!-- 手机浏览器地址栏颜色,nav.js 切换主题时会同步改 -->
+  <meta name="theme-color" content="#070b14">
+  <!-- 主题预置:必须在 CSS 之前执行,否则浅色用户刷新时会先闪一下深色 -->
+  <script>
+    try {
+      if (localStorage.getItem("class103-theme") === "light") {
+        document.documentElement.dataset.theme = "light";
+        document.querySelector('meta[name="theme-color"]').content = "#f4f6fa";
+      }
+    } catch (e) {}
+  </script>
+  <!-- 全站字体 MiSans(小米官方 CDN,国内直连;中文+西文统一,跨设备渲染一致) -->
+  <link rel="preconnect" href="https://font.sec.miui.com" crossorigin>
+  <link rel="stylesheet" href="https://font.sec.miui.com/font/css?family=MiSans:300,400,500,700,900:Chinese_Simplify,Latin&display=swap">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <style>
@@ -44,9 +54,12 @@
       font-size: 0.9rem;
     }
     .tl-body {
-      background: linear-gradient(165deg, var(--bg1), var(--bg2));
-      border: 1px solid var(--gold-line);
-      border-radius: 14px;
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-brd);
+      box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+      border-radius: 16px;
       padding: 18px 22px;
       margin-top: 8px;
     }
@@ -55,8 +68,7 @@
 
     /* 置顶公告:金色描边突出 */
     .tl-item.pinned .tl-body {
-      border-color: var(--gold);
-      box-shadow: 0 10px 36px rgba(240, 185, 11, 0.12);
+      border-color: var(--gold-line);
     }
     .tl-pin {
       display: inline-block;

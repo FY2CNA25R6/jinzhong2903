@@ -7,10 +7,20 @@
   <title>高光时刻 · 103班 音乐领军班</title>
   <!-- 跨文档视图过渡:多页之间平滑切换,无白屏 -->
   <meta name="view-transition" content="same-origin">
-  <!-- 西文/数字字体 Inter(中文自动回退苹方 PingFang SC) -->
-  <link rel="preconnect" href="https://fonts.loli.net">
-  <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
-  <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <!-- 手机浏览器地址栏颜色,nav.js 切换主题时会同步改 -->
+  <meta name="theme-color" content="#070b14">
+  <!-- 主题预置:必须在 CSS 之前执行,否则浅色用户刷新时会先闪一下深色 -->
+  <script>
+    try {
+      if (localStorage.getItem("class103-theme") === "light") {
+        document.documentElement.dataset.theme = "light";
+        document.querySelector('meta[name="theme-color"]').content = "#f4f6fa";
+      }
+    } catch (e) {}
+  </script>
+  <!-- 全站字体 MiSans(小米官方 CDN,国内直连;中文+西文统一,跨设备渲染一致) -->
+  <link rel="preconnect" href="https://font.sec.miui.com" crossorigin>
+  <link rel="stylesheet" href="https://font.sec.miui.com/font/css?family=MiSans:300,400,500,700,900:Chinese_Simplify,Latin&display=swap">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/moments.css">
@@ -102,7 +112,7 @@
           </figure>
           <figure class="video-item">
             <video controls preload="metadata" playsinline>
-              <source src="https://yourimageshare.com/ib/Tcjn27S6pl.mp4" type="video/mp4">
+              <source src="assets/videos/parade-2.mp4" type="video/mp4">
               你的浏览器不支持视频播放。
             </video>
             <figcaption class="video-note">片段二 · 时长 00:30</figcaption>
